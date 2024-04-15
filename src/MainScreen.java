@@ -1,18 +1,14 @@
-import com.sun.tools.javac.Main;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Unmodifiable;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class MainScreen extends  JFrame implements ActionListener {
 
     static JFrame frame;
-    static JTextField exercize;
+    static JTextField exercise;
     static Random rand = new Random();
     static ArrayList<String> operations = new ArrayList<>();
     static String title = "";
@@ -23,7 +19,7 @@ public class MainScreen extends  JFrame implements ActionListener {
         update();
     }
 
-    public static ArrayList<JButton> generateButtons() {
+    public static @NotNull ArrayList<JButton> generateButtons() {
         ArrayList<JButton> buttons = new ArrayList<>();
         ArrayList<Integer> numbers = generateNum();
         for (int i = 0; i < 4; i++) {
@@ -41,7 +37,7 @@ public class MainScreen extends  JFrame implements ActionListener {
     }
 
     public static @NotNull ArrayList<Integer> generateNum() {
-        ArrayList<Integer> num = new ArrayList<Integer>();
+        ArrayList<Integer> num = new ArrayList<>();
         int countAns = 0;
         for (int i = 0; i < 4; i++) {
             int temp = randomNumber();
@@ -66,7 +62,7 @@ public class MainScreen extends  JFrame implements ActionListener {
 
     // Обработка события
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(@NotNull ActionEvent e) {
         if (answer == Integer.parseInt(e.getActionCommand())) {
             System.out.println("You got a correct answer");
             windowPreparation(frame);
@@ -119,9 +115,9 @@ public class MainScreen extends  JFrame implements ActionListener {
 
         frame = new JFrame("Тренажёр по математике");
 
-        exercize = new JTextField(5);
-        exercize.setEditable(false);
-        exercize.setText(title);
+        exercise = new JTextField(5);
+        exercise.setEditable(false);
+        exercise.setText(title);
 
         ArrayList<JButton> btn = generateButtons();
 
@@ -129,10 +125,10 @@ public class MainScreen extends  JFrame implements ActionListener {
         btn.forEach(buttons::add);
 
         JPanel display = new JPanel();
-        GridLayout nums = new GridLayout(1, 4);
-        buttons.setLayout(nums);
+        GridLayout num = new GridLayout(1, 4);
+        buttons.setLayout(num);
 
-        display.add(exercize);
+        display.add(exercise);
         display.add(buttons);
 
         // Screen
