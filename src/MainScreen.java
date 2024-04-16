@@ -7,13 +7,12 @@ import java.util.*;
 
 public class MainScreen extends  JFrame implements ActionListener {
 
-    static JFrame frame;
-    static JTextField exercise;
-    static Random rand = new Random();
-    static ArrayList<String> operations = new ArrayList<>();
-    static String title = "";
-    static int answer = 0;
-    static MainScreen listener = new MainScreen();
+    public static JFrame frame;
+    public static Random rand = new Random();
+    private static final ArrayList<String> operations = new ArrayList<>();
+    public static String title = "";
+    private static int answer = 0;
+    public static MainScreen listener = new MainScreen();
 
     public static void main(String[] args) {
         update();
@@ -30,13 +29,13 @@ public class MainScreen extends  JFrame implements ActionListener {
         return buttons;
     }
 
-    public static int randomNumber() {
+    private static int randomNumber() {
         int minValue = 1;
         int maxValue = 10;
         return minValue + (int) (Math.random() * (maxValue - minValue + 1));
     }
 
-    public static @NotNull ArrayList<Integer> generateNum() {
+    private static @NotNull ArrayList<Integer> generateNum() {
         ArrayList<Integer> num = new ArrayList<>();
         int countAns = 0;
         for (int i = 0; i < 4; i++) {
@@ -69,7 +68,7 @@ public class MainScreen extends  JFrame implements ActionListener {
         }
         else {
             System.out.println("You got incorrect answer, try again");
-            System.out.println(e.getID());
+            System.out.println(e.getActionCommand());
         }
     }
 
@@ -106,7 +105,7 @@ public class MainScreen extends  JFrame implements ActionListener {
         else {
             title = String.format("%d %s %d", firstNum, operation, secondNum - 1);
             if (Objects.equals(operation, "+")) {
-                answer = firstNum + secondNum;
+                answer = firstNum + (secondNum-1);
             }
             else {
                 answer = 1;
@@ -115,7 +114,7 @@ public class MainScreen extends  JFrame implements ActionListener {
 
         frame = new JFrame("Тренажёр по математике");
 
-        exercise = new JTextField(5);
+        JTextField exercise = new JTextField(5);
         exercise.setEditable(false);
         exercise.setText(title);
 
@@ -139,7 +138,7 @@ public class MainScreen extends  JFrame implements ActionListener {
 
 
     // Очистка экрана при правильном ответе
-    public static void windowPreparation(JFrame window) {
+    private static void windowPreparation(JFrame window) {
         window.removeAll();
         window.validate();
         window.repaint();
