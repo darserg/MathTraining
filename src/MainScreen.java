@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
@@ -13,13 +14,13 @@ public class MainScreen extends JFrame implements ActionListener{
         frame.add(getDisplay());
         frame.setSize(1000, 500);
         frame.setVisible(true);
-        Countdown countdown = new Countdown();
     }
 
     private static JPanel getDisplay() {
         JTextArea text = new JTextArea();
         text.append(title);
-        text.append(subtitle);
+        JTextArea sub = new JTextArea();
+        sub.append(subtitle);
 
         JPanel display = new JPanel();
         JPanel buttons = new JPanel();
@@ -32,8 +33,12 @@ public class MainScreen extends JFrame implements ActionListener{
         buttons.add(start);
         buttons.add(exit);
 
+        GridLayout disp = new GridLayout(2, 2);
+
         display.add(text);
+        display.add(sub);
         display.add(buttons);
+        display.setLayout(disp);
         return display;
     }
 
@@ -41,11 +46,11 @@ public class MainScreen extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if (Objects.equals(e.getActionCommand(), "Играть")) {
             frame.dispose();
-            Countdown.main();
+            Countdown.endOfWorking();
             ExcercizesScreen.update();
         }
         else {
-            frame.dispose();
+            System.exit(0);
         }
     }
 }

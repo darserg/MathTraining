@@ -64,10 +64,13 @@ public class ExcercizesScreen extends  JFrame implements ActionListener {
     public void actionPerformed(@NotNull ActionEvent e) {
         if (answer == Integer.parseInt(e.getActionCommand())) {
             System.out.println("You got a correct answer");
+            Countdown.countCorrectAns += 1;
+            Countdown.countAns += 1;
             windowPreparation(frame);
         }
         else {
             System.out.println("You got incorrect answer, try again");
+            Countdown.countAns += 1;
             System.out.println(e.getActionCommand());
         }
     }
@@ -141,5 +144,9 @@ public class ExcercizesScreen extends  JFrame implements ActionListener {
     private static void windowPreparation(@NotNull JFrame window) {
         window.dispose();
         update();
+    }
+
+    public static void closeWindow () {
+        frame.dispose();
     }
 }

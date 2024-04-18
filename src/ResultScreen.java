@@ -5,7 +5,7 @@ import java.util.*;
 
 public class ResultScreen extends JFrame implements ActionListener {
     public static JFrame frame = new JFrame();
-    public static String title = String.format("Игра окочнена, вы набрали %d правильных ответов из %d.", 9, 10);
+    public static String title;
     private final static ResultScreen listener = new ResultScreen();
 
     @Override
@@ -15,11 +15,12 @@ public class ResultScreen extends JFrame implements ActionListener {
             ExcercizesScreen.update();
         }
         else {
-            frame.dispose();
+            System.exit(0);
         }
     }
 
-    public static void main() {
+    public static void drawFrame(int correctAns, int totalAns) {
+        title = String.format("Игра окочнена, вы набрали %d правильных ответов из %d.", correctAns, totalAns);
         frame.add(getDisplay());
         frame.setSize(1000, 500);
         frame.setVisible(true);
