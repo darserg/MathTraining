@@ -138,10 +138,8 @@ public class MainScreen extends  JFrame implements ActionListener {
 
 
     // Очистка экрана при правильном ответе
-    private static void windowPreparation(JFrame window) {
-        window.removeAll();
-        window.validate();
-        window.repaint();
+    private static void windowPreparation(@NotNull JFrame window) {
+        window.dispose();
         update();
     }
 }
