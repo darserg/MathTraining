@@ -4,10 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
 
-public class MainScreen extends JFrame implements ActionListener{
-    public static JFrame frame = new JFrame();
-    public static String title = "Добро пожаловать в математический тренажер";
-    public static String subtitle = "Нажмите играть, чтобы приступить к решению задач";
+public class MainScreen extends JFrame implements ActionListener {
+    private final static JFrame frame = new JFrame();
+    private static final String title = "Добро пожаловать в математический тренажер";
+    private final static String subtitle = "Нажмите играть, чтобы приступить к решению задач";
     private final static MainScreen listener = new MainScreen();
 
     public static void main(String[] args) {

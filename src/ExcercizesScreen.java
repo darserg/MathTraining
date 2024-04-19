@@ -7,12 +7,13 @@ import java.util.*;
 
 public class ExcercizesScreen extends  JFrame implements ActionListener {
 
-    public static JFrame frame;
-    public static Random rand = new Random();
+    private ExcercizesScreen(){ }
+
+    private static JFrame frame;
+    private final static Random rand = new Random();
     private static final ArrayList<String> operations = new ArrayList<>();
-    public static String title = "";
     private static int answer = 0;
-    public static ExcercizesScreen listener = new ExcercizesScreen();
+    private final static ExcercizesScreen listener = new ExcercizesScreen();
 
     public static void main(String[] args) {
         update();
@@ -87,8 +88,9 @@ public class ExcercizesScreen extends  JFrame implements ActionListener {
 
 
         // Task to complete
+        String title = "";
         if (firstNum > secondNum) {
-            title  = String.format("%d %s %d", firstNum, operation, secondNum);
+            title = String.format("%d %s %d", firstNum, operation, secondNum);
             if (Objects.equals(operation, "+")) {
                 answer = firstNum + secondNum;
             }

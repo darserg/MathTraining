@@ -4,8 +4,8 @@ import java.awt.event.ActionListener;
 import java.util.*;
 
 public class ResultScreen extends JFrame implements ActionListener {
-    public static JFrame frame = new JFrame();
-    public static String title;
+    private final static JFrame frame = new JFrame();
+    private static String title;
     private final static ResultScreen listener = new ResultScreen();
 
     @Override
